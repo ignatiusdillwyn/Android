@@ -102,7 +102,9 @@ public class Product_Detail_Activity extends AppCompatActivity {
                     Register.list_User.get(userke).setWallet(wallet_customer);
 
                     //Store data user
+                    Register.list_User.get(userke).convert_arraylist_to_string();
                     String json_list_user = gson.toJson(Register.list_User);
+                    Log.e("json list user", json_list_user);
                     store_data.putString("list_user_key", json_list_user);
                     store_data.apply();
                     //Store data user

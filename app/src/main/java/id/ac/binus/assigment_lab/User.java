@@ -11,6 +11,31 @@ public class User {
     private String phone_number;
     private int wallet;
     static private ArrayList<Transaction_History> list_transaction_history = new ArrayList<>();
+    private String transaction_history_data;
+
+    public void convert_arraylist_to_string(){
+        this.transaction_history_data = "";
+        for(int i = 0; i < this.list_transaction_history.size(); i++){
+            transaction_history_data += this.list_transaction_history.get(i).getProduct_name() + "," + this.list_transaction_history.get(i).getTransaction_date() + "," + this.list_transaction_history.get(i).getProduct_price()+ ";";
+        }
+    }
+
+    public void convert_string_to_arraylist(){
+        String[] all_transaction_data = this.transaction_history_data.split(";");
+//        "ExplodingKitten,28/3/2021,12000"
+//        "CardsAgainstHumanity,28/3/2021,20000"
+        for(int i = 0 ; i < all_transaction_data.length; i++){
+            String[] all_transaction_list_attribute = all_transaction_data[i].split(",");
+            this.list_transaction_history.add(new Transaction_History(all_transaction_list_attribute[0],all_transaction_list_attribute[1], Integer.parseInt(all_transaction_list_attribute[2]))) ;
+        }
+//        "ExplodingKitten"
+//        "28/3/2021"
+//        "12000"
+
+//        "ExplodingKitten"
+//        "28/3/2021"
+//        "12000"
+    }
 
     public User(int user_id, String username, String password, String gender, String dob, String phone_number, int wallet) {
         this.user_id = user_id;

@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -27,7 +28,7 @@ public class HomePage extends AppCompatActivity {
     TextView transaction_history_txt;
     RecyclerView homeRecycler;
 
-    ArrayList<User> list_user = new ArrayList<>();
+//    ArrayList<User> list_user = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,20 +52,25 @@ public class HomePage extends AppCompatActivity {
         //AMBIL DATA USER
         Gson gson = new Gson();
         String response = get_data.getString("list_user_key","null");
-        list_user = gson.fromJson(response,new TypeToken<List<User>>(){}.getType());
+        Register.list_User = gson.fromJson(response,new TypeToken<List<User>>(){}.getType());
+        Log.e("list user key response", response);
         int userke = get_data.getInt("userke",0);
         //AMBIL DATA USER
 
+        for (int i = 0; i < Register.list_User.size(); i++){
+            Log.e(i+"", Register.list_User.get(i).getUsername());
+        }
 //        //TES
 //        Toast.makeText(HomePage.this, "dor" + String.valueOf(list_user.get(userke).getList_transaction_history().size()), Toast.LENGTH_SHORT).show();
 //        //TES
 
-        if (list_user.get(userke).getList_transaction_history().isEmpty()){
+        if (Register.list_User.get(userke).getList_transaction_history().isEmpty()){
             transaction_history_txt.setText("You don't have any transaction history");
         }
 
         else{
             //SETTING RECYVLER VIEW
+            Register.list_User.get(userke).convert_string_to_arraylist();
             HomePage_Adapter homePage_adapter = new HomePage_Adapter(this);
             homePage_adapter.setUserArralist(Register.list_User);
 //            homePage_adapter.notifyDataSetChanged();
@@ -78,7 +84,7 @@ public class HomePage extends AppCompatActivity {
 
 
         //SET TEXT WALLET
-        wallet.setText("Rp " +  String.valueOf(list_user.get(userke).getWallet()));
+        wallet.setText("Rp " +  String.valueOf(Register.list_User.get(userke).getWallet()));
         //SET TEXT WALLET
 
         //TES
