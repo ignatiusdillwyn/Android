@@ -70,7 +70,11 @@ public class HomePage extends AppCompatActivity {
 
         else{
             //SETTING RECYVLER VIEW
+
             Register.list_User.get(userke).convert_string_to_arraylist();
+            for (int i = 0; i <  Register.list_User.get(userke).getList_transaction_history().size();i++){
+                Log.e("Isi Array List",Register.list_User.get(userke).getList_transaction_history().get(i).getProduct_name());
+            }
             HomePage_Adapter homePage_adapter = new HomePage_Adapter(this);
             homePage_adapter.setUserArralist(Register.list_User);
 //            homePage_adapter.notifyDataSetChanged();

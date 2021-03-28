@@ -46,13 +46,13 @@ public class HomePage_Adapter extends RecyclerView.Adapter<HomePage_Adapter.View
     @Override
     public void onBindViewHolder(@NonNull HomePage_Adapter.ViewHolder holder, int position) {
         //set data
-        holder.product_name_txt.setText("Product Name: " + userArrayist.get(userke).getList_transaction_history().get(position).getProduct_name());
-        holder.product_price_txt.setText("Product Price: Rp " + String.valueOf(userArrayist.get(userke).getList_transaction_history().get(position).getProduct_price()));
-        holder.transaction_date_txt.setText("Transaction_Date: " + userArrayist.get(userke).getList_transaction_history().get(position).getTransaction_date());
+//        holder.product_name_txt.setText("Product Name: " + userArrayist.get(userke).getList_transaction_history().get(position).getProduct_name());
+//        holder.product_price_txt.setText("Product Price: Rp " + String.valueOf(userArrayist.get(userke).getList_transaction_history().get(position).getProduct_price()));
+//        holder.transaction_date_txt.setText("Transaction_Date: " + userArrayist.get(userke).getList_transaction_history().get(position).getTransaction_date());
 
-//        holder.product_name_txt.setText(Register.list_User.get(userke).getList_transaction_history().get(position).getProduct_name());
-//        holder.product_price_txt.setText(String.valueOf(Register.list_User.get(userke).getList_transaction_history().get(position).getProduct_price()));
-//        holder.transaction_date_txt.setText(Register.list_User.get(userke).getList_transaction_history().get(position).getTransaction_date());
+        holder.product_name_txt.setText(Register.list_User.get(userke).getList_transaction_history().get(position).getProduct_name());
+        holder.product_price_txt.setText(String.valueOf(Register.list_User.get(userke).getList_transaction_history().get(position).getProduct_price()));
+        holder.transaction_date_txt.setText(Register.list_User.get(userke).getList_transaction_history().get(position).getTransaction_date());
 
         final User infoData =userArrayist.get(position);
 

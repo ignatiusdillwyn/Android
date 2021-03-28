@@ -27,6 +27,7 @@ public class Login extends AppCompatActivity {
     EditText edittext_password;
     Button btn_login;
     Button btn_register;
+    int userke = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +37,8 @@ public class Login extends AppCompatActivity {
         edittext_password = findViewById(R.id.password);
         btn_login = findViewById(R.id.btn_login);
         btn_register = findViewById(R.id.btn_register);
+
+
 
         //Ambil username
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(Login.this);
@@ -63,6 +66,13 @@ public class Login extends AppCompatActivity {
         //Ambil id_user
 
 
+        if (Register.list_User.size() != 0){
+            userke = sp.getInt("userke",0);
+            Register.list_User.get(userke).convert_string_to_arraylist();
+        }
+
+
+
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,7 +93,7 @@ public class Login extends AppCompatActivity {
                 //Assign
 
 
-                int userke = 0;
+
                 for (int i = 0; i < Register.list_User.size(); i++){
                     //Username ketemu di database
                     if(Register.list_User.get(i).getUsername().equals(username_login)){
